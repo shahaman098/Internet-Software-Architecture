@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://source.unsplash.com/1600x900/?nature"');
+    background-size: cover;
+    color: #fff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #00000000;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3);
+}
+
+h1 {
+    text-align: center;
+}
+
+.weather-data {
+    margin-top: 20px;
+    border-top: 1px solid #fff;
+    padding-top: 20px;
+}
+
+.weather-data p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.weather-data p span {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        max-width: 90%;
+    }
+}
