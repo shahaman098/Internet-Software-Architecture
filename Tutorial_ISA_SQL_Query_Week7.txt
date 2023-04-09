@@ -1,0 +1,37 @@
+Qun1:
+CREATE TABLE Student(id int PRIMARY key AUTO_INCREMENT,name varchar(250),age int,gender varchar(250),grade_level int);
+INSERT INTO Student(name,age,gender,grade_level)VALUES("Aman",18,"Male",20),("Sita",20,"Female",10),("Gita",22,"Female",10);
+SELECT name FROM Student WHERE gender="Female" and grade_level=10;
+
+Qun2:
+CREATE TABLE employee(id int PRIMARY key AUTO_INCREMENT,first_name varchar(250),last_name varchar(250),department varchar(250),salary int);
+INSERT INTO employee(first_name,last_name,department,salary)VALUES("Aman","Sah","IT",20000),("Aman","Sah","RTE",30000),("Krish","Sah","SSD",40000);
+SELECT o1.first_name, o1.salary, o1.department FROM
+employee o1 WHERE o1.salary = 
+(SELECT MAX(o2.salary) 
+FROM employee o2 WHERE o1.department = o2.department)
+GROUP BY o1.department;
+#SELECT * FROM employee;
+
+Qun3:
+CREATE TABLE customers(id int PRIMARY key AUTO_INCREMENT,name varchar(250),email varchar(250));
+INSERT INTO customers(name,email)VALUES("Anup","tanup9800@gmail.com"),("John","jhon123@gmail.com");
+CREATE TABLE orders(id int PRIMARY key AUTO_INCREMENT,customer_ID int,orders int,amount int, FOREIGN KEY (customer_ID) REFERENCES customers(id));
+INSERT INTO orders(customer_ID,orders,amount)VALUES(1,23,2003),(2,1,100);
+SELECT customers.name, customers.email from orders
+join customers on orders.customer_ID = customers.id WHERE orders.orders>1 and amount>1000;
+
+Qun4:
+CREATE table products(id int PRIMARY key AUTO_INCREMENT,name varchar(250),price int,quantity varchar(250));
+INSERT INTO products(name,price,quantity)VALUES("Bag",1000,"10units available"),("Shoes",2500,"20units available"),("Shirt",500,"out of stock");
+SELECT name FROM products WHERE quantity="out of stock";
+
+Qun1:
+CREATE TABLE employee(id int PRIMARY key AUTO_INCREMENT,first_name varchar(250),last_name varchar(250),department varchar(250),salary int);
+INSERT INTO employee(first_name,last_name,department,salary)VALUES("Aman","Sah","IT",20000),("Aman","Sah","RTE",30000),("Krish","Sah","SSD",40000);
+SELECT o1.salary, o1.department FROM
+employee o1 WHERE o1.salary = 
+(SELECT AVG(o2.salary)  
+FROM employee o2 WHERE o1.department = o2.department)
+GROUP BY o1.department
+ORDER BY o1.salary DESC;
